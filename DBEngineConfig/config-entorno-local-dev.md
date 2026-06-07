@@ -1,8 +1,10 @@
-<b><font size="6">Sistema de Gestión de Parques Nacionales</font></b>
+# 
 
-<b><font size="5">Entrega 4 — Instalación y Configuración del Motor SQL Server</font></b>
+# Sistema de Gestión de Parques Nacionales
 
----
+## **<font size="5">Entrega 4 — Instalación y Configuración del Motor SQL Server</font>**
+<br>
+
 | | |
 | :--- | :--- |
 | **Universidad** | Universidad Nacional de La Matanza |

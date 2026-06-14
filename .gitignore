@@ -12,6 +12,7 @@ bin/
 obj/
 
 # DataGrip / JetBrains
+.vscode/
 .idea/
 *.iml
 

@@ -5,6 +5,8 @@
   </Configurations>
   <Folder Name="/00_Database/">
     <File Path="CreateDatabase.sql" />
+    <File Path="SecondItem.sql" />
+    <File Path="../scripts/00_setup/ddbba.CreateDB.sql" />
   </Folder>
   <Folder Name="/01_Security/">
     <File Path="Logins.sql" />

@@ -4,7 +4,6 @@ Bases de Datos Aplicada - 3641 - Comisión 2900
 Grupo: 1
 Integrantes:
      - Arenas Velasco, Artin Leonel
-     - Leguizamon Sarmiento, Juan Andrés
      - Rios, Marcos Adrían
      - Romano, Jorge Dario
 

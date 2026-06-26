@@ -29,7 +29,7 @@ IF OBJECT_ID('Ventas.FK_Venta_Parque_ParqueId', 'F') IS NOT NULL ALTER TABLE Ven
 IF OBJECT_ID('Ventas.FK_Venta_Visitante_VisitanteId', 'F') IS NOT NULL ALTER TABLE Ventas.Venta DROP CONSTRAINT FK_Venta_Visitante_VisitanteId;
 IF OBJECT_ID('Ventas.FK_LineaVenta_Venta_VentaId', 'F') IS NOT NULL ALTER TABLE Ventas.LineaVenta DROP CONSTRAINT FK_LineaVenta_Venta_VentaId;
 IF OBJECT_ID('Ventas.FK_LineaVenta_Entrada_EntradaId', 'F') IS NOT NULL ALTER TABLE Ventas.LineaVenta DROP CONSTRAINT FK_LineaVenta_Entrada_EntradaId;
-IF OBJECT_ID('Ventas.FK_Entrada_TipoVisitante_TipoVisitanteId', 'F')  IS NOT NULL ALTER TABLE Ventas.Entrada DROP CONSTRAINT FK_Entrada_TipoVisitante_TipoVisitanteId;
+IF OBJECT_ID('Ventas.FK_LineaVenta_TipoVisitante_TipoVisitanteId', 'F')  IS NOT NULL ALTER TABLE Ventas.LineaVenta DROP CONSTRAINT FK_LineaVenta_TipoVisitante_TipoVisitanteId;
 IF OBJECT_ID('Ventas.FK_Entrada_Parque_ParqueId', 'F') IS NOT NULL ALTER TABLE Ventas.Entrada DROP CONSTRAINT FK_Entrada_Parque_ParqueId;
 IF OBJECT_ID('Ventas.FK_LineaActividad_Venta_VentaId', 'F') IS NOT NULL ALTER TABLE Ventas.LineaActividad DROP CONSTRAINT FK_LineaActividad_Venta_VentaId;
 IF OBJECT_ID('Ventas.FK_LineaActividad_Actividad_ActividadId', 'F') IS NOT NULL ALTER TABLE Ventas.LineaActividad DROP CONSTRAINT FK_LineaActividad_Actividad_ActividadId;
@@ -162,7 +162,6 @@ IF OBJECT_ID('Ventas.Entrada', 'U') IS NOT NULL DROP TABLE Ventas.Entrada;
 CREATE TABLE Ventas.Entrada (
     EntradaId       INT IDENTITY(1,1) NOT NULL,
     ParqueId        INT               NOT NULL,
-    TipoVisitanteId INT               NOT NULL,
     Nombre          VARCHAR(50)       NOT NULL,
     Descripcion     VARCHAR(100)      NOT NULL,
     Precio          DECIMAL(18,6)     NOT NULL,
@@ -188,13 +187,14 @@ ALTER TABLE Ventas.Venta ADD CONSTRAINT UQ_Venta_PuntoVenta_NumeroTicket UNIQUE 
 
 IF OBJECT_ID('Ventas.LineaVenta', 'U') IS NOT NULL DROP TABLE Ventas.LineaVenta;
 CREATE TABLE Ventas.LineaVenta (
-    LineaVentaId   INT IDENTITY(1,1) NOT NULL,
-    VentaId        INT               NOT NULL,
-    EntradaId      INT               NOT NULL,
-    Cantidad       INT               NOT NULL,
-    PrecioUnitario DECIMAL(18,6)     NOT NULL,
-    Subtotal       DECIMAL(18,6)     NOT NULL,
-    Descuento      DECIMAL(5,2)      NOT NULL
+    LineaVentaId    INT IDENTITY(1,1) NOT NULL,
+    VentaId         INT               NOT NULL,
+    EntradaId       INT               NOT NULL,
+    TipoVisitanteId INT               NOT NULL,
+    Cantidad        INT               NOT NULL,
+    PrecioUnitario  DECIMAL(18,6)     NOT NULL,
+    Subtotal        DECIMAL(18,6)     NOT NULL,
+    Descuento       DECIMAL(5,2)      NOT NULL
 );
 ALTER TABLE Ventas.LineaVenta ADD CONSTRAINT PK_LineaVenta_LineaVentaId PRIMARY KEY (LineaVentaId);
 
@@ -251,7 +251,9 @@ ALTER TABLE Ventas.LineaVenta
     ADD CONSTRAINT FK_LineaVenta_Venta_VentaId
     FOREIGN KEY (VentaId) REFERENCES Ventas.Venta(VentaId),
     CONSTRAINT FK_LineaVenta_Entrada_EntradaId
-    FOREIGN KEY (EntradaId) REFERENCES Ventas.Entrada(EntradaId);
+    FOREIGN KEY (EntradaId) REFERENCES Ventas.Entrada(EntradaId),
+    CONSTRAINT FK_LineaVenta_TipoVisitante_TipoVisitanteId
+    FOREIGN KEY (TipoVisitanteId) REFERENCES Ventas.TipoVisitante(TipoVisitanteId);
 
 ALTER TABLE Ventas.LineaActividad
     ADD CONSTRAINT FK_LineaActividad_Venta_VentaId
@@ -261,9 +263,7 @@ ALTER TABLE Ventas.LineaActividad
 
 ALTER TABLE Ventas.Entrada
     ADD CONSTRAINT FK_Entrada_Parque_ParqueId
-    FOREIGN KEY (ParqueId) REFERENCES Parques.Parque(ParqueId),
-    CONSTRAINT FK_Entrada_TipoVisitante_TipoVisitanteId
-    FOREIGN KEY (TipoVisitanteId) REFERENCES Ventas.TipoVisitante(TipoVisitanteId);
+    FOREIGN KEY (ParqueId) REFERENCES Parques.Parque(ParqueId);
 
 -- -----------------------------------------------------------------------------
 -- ÍNDICES

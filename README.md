@@ -28,30 +28,54 @@ datos públicos y reportes.
 
 ```
 database/
-├── ddl/           Scripts T-SQL de inicialización (ejecutar en orden numérico)
-├── importacion/   Stored procedures de importación masiva (E6)
-├── reportes/      Stored procedures de reportes (E7)
-└── testing/       Scripts de testing 1:1 con cada script de SPs
-datasets/          Archivos CSV/XML de datos externos a importar
-docs/              Documentación (norma de nomenclatura, DER)
+├── 00_Setup/               ← definición de la base de datos (ejecutar en orden)
+├── 01_DDL/                 ← definición de la base de datos (ejecutar en orden)
+├── 02_Seguridad/           ← Login, Usuarios y Permisos
+├── 03_Programabilidad/     ← stored procedures abm business (E5)
+├── 04_Data/                ← inicializacion de datos de la tabla (E5)
+├── 05_Imports/             ← stored procedures de impotación (E6)
+├── 06_Reportes/            ← stored procedures de reportes (E7)
+└── 07_Testing/             ← scripts de testing 1:1 con cada script de SPs (E5, E6...)
+datasets/                   ← archivos CSV/XML de datos externos
+docs/                       ← documentación (norma de nomenclatura, DER)
 ```
 
-Ver [database/README.md](database/README.md) para el orden de ejecución completo y la tabla de entregas.
+## Orden de ejecución — inicialización completa (database/ddl/)
 
-## Ejecución rápida
+| # | Script | Entrega | Contenido |
+|---|--------|---------|-----------|
+| — | `00_teardown.sql` | — | Elimina la base existente (si existe) |
+| 1 | `01_base_esquemas.sql` | E5 | Crea la base `GestionParquesNacionales` y los esquemas |
+| 2 | `02_tablas.sql` | E5 | Todas las tablas + restricciones + índices |
+| 3 | `Schema.[NombreSP].sql` | E5 | Stored procedures ABM de todas las entidades |
+| 4 | `Schema.[NombreSP].sql` | E5 | SPs de lógica de negocio (transaccionales) |
+| 5 | `Schema.[NombreFuncion].sql` | E5 | Funciones escalares y de tabla |
+| 6 | `Schema.[NombreVista].sql` | E5 | Vistas del sistema |
+| 7 | `Roles.sql` | E8 | Roles y permisos granulares |
+| 8 | `Cifrado.sql` | E8 | Cifrado de datos sensibles |
+| 9 | `datos_iniciales.sql` | E9 | Juego de datos inicial (seed) |
 
-Para recrear la base desde cero en SSMS, ejecutar en este orden:
+## Scripts independientes (no forman parte de la inicialización)
 
-1. `database/ddl/00_teardown.sql` — elimina la base existente (si existe)
-2. `database/ddl/01_base_esquemas.sql` — crea la base y los esquemas
-3. `database/ddl/02_tablas.sql` — tablas, restricciones e índices
-4. `database/ddl/03_sp_abm.sql` — stored procedures ABM
-5. `database/ddl/04_sp_negocio.sql` — lógica de negocio (transaccional)
-6. `database/ddl/05_funciones.sql` — funciones escalares y de tabla
-7. `database/ddl/06_vistas.sql` — vistas
-8. `database/ddl/07_roles_permisos.sql` — roles y permisos
-9. `database/ddl/08_cifrado.sql` — cifrado de datos sensibles
-10. `database/ddl/09_datos_iniciales.sql` — datos de prueba (seed)
+| Script | Entrega | Contenido |
+|--------|---------|-----------|
+| `importacion/sp_importacion.sql` | E6 | SPs de importación masiva (upsert, sin duplicados) |
+| `reportes/sp_reportes.sql` | E7 | SPs de reportes (al menos dos retornan XML) |
+
+> Estos scripts se ejecutan una vez que la base está inicializada (luego del paso 9).
+
+## Testing (1:1 con los scripts de SPs)
+
+| Script de testing | Cubre |
+|-------------------|-------|
+| `07_Testing/test_Concesiones.uspConcesionCreate.sql` | `03_Programabilidad/Stored Procedures/Concesiones.uspConcesionCreate.sql` |
+| `07_Testing/test_Concesiones.uspConcesionPagoRegister.sql` | `03_Programabilidad/Stored Procedures/Concesiones.uspConcesionPagoRegister.sqll` |
+| `07_Testing/test_Personal.uspGuardaparqueAsignarParque.sql` | `03_Programabilidad/Stored Procedures/Personal.uspGuardaparqueAsignarParque.sql` |
+| `07_Testing/test_Personal.uspTourAsignarGuia.sql` | `03_Programabilidad/Stored Procedures/Personal.uspTourAsignarGuia.sql` |
+| | `03_Programabilidad/Stored Procedures/criptCreateProcedures.sql` |
+| `07_Testing/test_Ventas.uspVentaRegistrar.sql` | `03_Programabilidad/Stored Procedures/Ventas.uspVentaRegistrar.sql` |
+
+La **norma de nomenclatura** está en [docs/norma-nomenclatura.md](../docs/norma-nomenclatura.md).
 
 ## Entregas
 

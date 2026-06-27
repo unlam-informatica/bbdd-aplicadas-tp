@@ -66,14 +66,14 @@ docs/                       ← documentación (norma de nomenclatura, DER)
 
 ## Testing (1:1 con los scripts de SPs)
 
-| Script de testing | Cubre |
+| Script de testing (07_Testing) | Cubre (03_Programabilidad/Stored Procedures/) |
 |-------------------|-------|
-| `07_Testing/test_Concesiones.uspConcesionCreate.sql` | `03_Programabilidad/Stored Procedures/Concesiones.uspConcesionCreate.sql` |
-| `07_Testing/test_Concesiones.uspConcesionPagoRegister.sql` | `03_Programabilidad/Stored Procedures/Concesiones.uspConcesionPagoRegister.sqll` |
-| `07_Testing/test_Personal.uspGuardaparqueAsignarParque.sql` | `03_Programabilidad/Stored Procedures/Personal.uspGuardaparqueAsignarParque.sql` |
-| `07_Testing/test_Personal.uspTourAsignarGuia.sql` | `03_Programabilidad/Stored Procedures/Personal.uspTourAsignarGuia.sql` |
-| | `03_Programabilidad/Stored Procedures/criptCreateProcedures.sql` |
-| `07_Testing/test_Ventas.uspVentaRegistrar.sql` | `03_Programabilidad/Stored Procedures/Ventas.uspVentaRegistrar.sql` |
+| `test_Concesiones.uspConcesionCreate.sql` | `Concesiones.uspConcesionCreate.sql` |
+| `test_Concesiones.uspConcesionPagoRegister.sql` | `Concesiones.uspConcesionPagoRegister.sqll` |
+| `test_Personal.uspGuardaparqueAsignarParque.sql` | `Personal.uspGuardaparqueAsignarParque.sql` |
+| `test_Personal.uspTourAsignarGuia.sql` | `Personal.uspTourAsignarGuia.sql` |
+| | `scriptCreateProcedures.sql` |
+| `test_Ventas.uspVentaRegistrar.sql` | `Ventas.uspVentaRegistrar.sql` |
 
 La **norma de nomenclatura** está en [docs/norma-nomenclatura.md](../docs/norma-nomenclatura.md).
 

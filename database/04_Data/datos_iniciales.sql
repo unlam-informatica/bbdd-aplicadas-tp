@@ -170,12 +170,12 @@ PRINT '--- Insertando datos en Parques.Actividad ---';
 
 INSERT INTO Parques.Actividad (ParqueId, Nombre, Tipo, DuracionMinutos, CupoMaximo, Valor)
 VALUES 
-	(1, 'Tour Cataratas Brasileño', 'Senderismo', 120, 30, 50000.00),
-	(1, 'Tour Garganta del Diablo', 'Senderismo', 180, 25, 65000.00),
-	(2, 'Trekking Perito Moreno', 'Trekking', 360, 15, 120000.00),
-	(3, 'Escalada Circuito Chico', 'Escalada', 240, 8, 95000.00),
-	(4, 'Ascenso Aconcagua', 'Montañismo', 1440, 5, 250000.00),
-	(5, 'Safari Fotográfico Iberá', 'Fotografía', 300, 20, 80000.00);
+	(1, 'Senderismo - Tour Cataratas Brasileño', 'Atracciones pagas', 120, 30, 50000.00),
+	(1, 'Senderismo - Tour Garganta del Diablo', 'Atracciones pagas', 180, 25, 65000.00),
+	(2, 'Trekking - Trekking Perito Moreno', 'Atracciones pagas', 360, 15, 120000.00),
+	(3, 'Escalada - Escalada Circuito Chico', 'Atracciones pagas', 240, 8, 95000.00),
+	(4, 'Montañismo - Ascenso Aconcagua', 'Atracciones pagas', 1440, 5, 250000.00),
+	(5, 'Fotografía- Safari Fotográfico Iberá', 'Atracciones pagas', 300, 20, 80000.00);
 GO
 
 -- =============================================

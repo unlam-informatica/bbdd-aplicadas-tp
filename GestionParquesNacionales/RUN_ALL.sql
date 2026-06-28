@@ -21,7 +21,7 @@ PRINT 'Creando base de datos...'
 	:r ../database/01_DDL/02_tablas.sql
 
 -- 04: Data
-	--:r ../database/04_Data/datos_iniciales.sql
+	:r ../database/04_Data/datos_iniciales.sql
 	
 -- 05: Programabilidad
 	
@@ -29,9 +29,17 @@ PRINT 'Creando base de datos...'
 	--:r ../database/ddl/05_funciones.sql
 	
 	-- Procedimientos Almacenados
-	:r "../database/03_Programabilidad/Stored Procedures/Concesiones.uspConcesionCreate.sql"
-	--:r ../database/ddl/03_sp_abm.sql
-	--:r ../database/ddl/04_sp_negocio.sql
+	:r "../database/03_Programabilidad/Stored Procedures/scriptCreateProcedures.sql"
+
+	:r "../database/03_Programabilidad/Stored Procedures/Concesiones.uspConcesionAlta.sql"
+	:r "../database/03_Programabilidad/Stored Procedures/Concesiones.uspRegistrarPagoCanon.sql"
+
+	:r "../database/03_Programabilidad/Stored Procedures/Parques.uspParqueAlta.sql"
+
+	:r "../database/03_Programabilidad/Stored Procedures/Personal.uspAsignarGuardaparque.sql"
+	:r "../database/03_Programabilidad/Stored Procedures/Personal.uspAsignarGuia.sql"
+
+	:r "../database/03_Programabilidad/Stored Procedures/Ventas.uspVentaRegistrar.sql"
 	
 	-- Disparadores
 	--:r ../database/ddl/triggerA.sql

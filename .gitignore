@@ -4,6 +4,7 @@
 [Rr]elease/
 x64/
 x86/
+console.sql
 
 # Archivos de compilación del proyecto SQL
 *.dbmdl

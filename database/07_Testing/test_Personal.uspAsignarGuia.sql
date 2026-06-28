@@ -98,19 +98,19 @@ PRINT '';
 PRINT '--- PASO 3: Creando actividades de prueba ---';
 
 INSERT INTO Parques.Actividad (ParqueId, Nombre, Tipo, DuracionMinutos, CupoMaximo, Valor)
-VALUES (@ParqueIdPrueba, 'Tour Sendero Norte', 'Senderismo', 120, 20, 15000.00);
+VALUES (@ParqueIdPrueba, 'Senderismo - Tour Sendero Norte', 'Atracciones pagas', 120, 20, 15000.00);
 SET @ActividadId1 = SCOPE_IDENTITY();
 
 INSERT INTO Parques.Actividad (ParqueId, Nombre, Tipo, DuracionMinutos, CupoMaximo, Valor)
-VALUES (@ParqueIdPrueba, 'Tour Mirador Sur', 'Senderismo', 90, 25, 12000.00);
+VALUES (@ParqueIdPrueba, 'Senderismo - Tour Mirador Sur', 'Atracciones pagas', 90, 25, 12000.00);
 SET @ActividadId2 = SCOPE_IDENTITY();
 
 INSERT INTO Parques.Actividad (ParqueId, Nombre, Tipo, DuracionMinutos, CupoMaximo, Valor)
-VALUES (@ParqueIdPrueba, 'Tour Laguna Azul', 'Fotografía', 60, 15, 9000.00);
+VALUES (@ParqueIdPrueba, 'Fotografía - Laguna Azul', 'Atracciones pagas', 60, 15, 9000.00);
 SET @ActividadId3 = SCOPE_IDENTITY();
 
 INSERT INTO Parques.Actividad (ParqueId, Nombre, Tipo, DuracionMinutos, CupoMaximo, Valor)
-VALUES (@ParqueIdAux, 'Tour Parque Auxiliar', 'Senderismo', 60, 10, 7000.00);
+VALUES (@ParqueIdAux, 'Senderismo - Tour Parque Auxiliar', 'Atracciones pagas', 60, 10, 7000.00);
 SET @ActividadIdAux = SCOPE_IDENTITY();
 
 PRINT 'Actividades creadas correctamente.';

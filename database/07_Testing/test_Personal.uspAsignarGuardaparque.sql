@@ -230,8 +230,8 @@ PRINT '--- PASO 5: Verificación de historial ---';
 
 SELECT
 	GuardaparqueId,
-	Nombre,
-	Apellido,
+	CAST(Nombre AS VARCHAR(15)) AS Nombre,
+	CAST(Apellido AS VARCHAR(15)) AS Apellido,
 	Dni,
 	FechaIngresoSistema,
 	FechaEgresoSistema,

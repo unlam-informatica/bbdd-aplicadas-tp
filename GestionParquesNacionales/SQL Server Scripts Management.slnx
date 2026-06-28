@@ -52,6 +52,7 @@
   <Folder Name="/Solution Items/">
     <File Path="RUN_ALL.sql" />
     <File Path="README.md" />
+    <File Path="ver-resultado-completo-dba.log" />
   </Folder>
 </Solution>
  

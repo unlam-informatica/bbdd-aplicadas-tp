@@ -75,19 +75,19 @@ GO
 -- =============================================
 PRINT '--- Reseteando contadores de IDENTITY ---';
 
-DBCC CHECKIDENT ('Parques.Parque', RESEED, 0);
-DBCC CHECKIDENT ('Concesiones.Concesion', RESEED, 0);
-DBCC CHECKIDENT ('Personal.Guardaparque', RESEED, 0);
-DBCC CHECKIDENT ('Personal.Guia', RESEED, 0);
-DBCC CHECKIDENT ('Parques.Actividad', RESEED, 0);
-DBCC CHECKIDENT ('Ventas.TipoVisitante', RESEED, 0);
-DBCC CHECKIDENT ('Ventas.Visitante', RESEED, 0);
-DBCC CHECKIDENT ('Concesiones.PagoCanon', RESEED, 0);
-DBCC CHECKIDENT ('Ventas.Entrada', RESEED, 0);
-DBCC CHECKIDENT ('Ventas.Venta', RESEED, 0);
-DBCC CHECKIDENT ('Ventas.LineaVenta', RESEED, 0);
-DBCC CHECKIDENT ('Ventas.LineaActividad', RESEED, 0);
-DBCC CHECKIDENT ('Personal.TourGuia', RESEED, 0);
+DBCC CHECKIDENT ('Parques.Parque', RESEED, 1);
+DBCC CHECKIDENT ('Concesiones.Concesion', RESEED, 1);
+DBCC CHECKIDENT ('Personal.Guardaparque', RESEED, 1);
+DBCC CHECKIDENT ('Personal.Guia', RESEED, 1);
+DBCC CHECKIDENT ('Parques.Actividad', RESEED, 1);
+DBCC CHECKIDENT ('Ventas.TipoVisitante', RESEED, 1);
+DBCC CHECKIDENT ('Ventas.Visitante', RESEED, 1);
+DBCC CHECKIDENT ('Concesiones.PagoCanon', RESEED, 1);
+DBCC CHECKIDENT ('Ventas.Entrada', RESEED, 1);
+DBCC CHECKIDENT ('Ventas.Venta', RESEED, 1);
+DBCC CHECKIDENT ('Ventas.LineaVenta', RESEED, 1);
+DBCC CHECKIDENT ('Ventas.LineaActividad', RESEED, 1);
+DBCC CHECKIDENT ('Personal.TourGuia', RESEED, 1);
 
 PRINT 'Contadores reseteados exitosamente.';
 GO
@@ -119,6 +119,10 @@ VALUES
 	('Parque Provincial Aconcagua', 'Mendoza, Argentina', 71610.00, 'Provincial', -32.653611, -70.011111, 1),
 	('Reserva Natural Iberá', 'Corrientes, Argentina', 784900.00, 'Reserva', -28.256667, -58.150000, 1);
 GO
+
+-- 2. Inmediatamente abajo, haces la consulta para ver el resultado
+--SELECT * FROM Parques.Parque;
+--GO
 
 -- =============================================
 -- 2. INSERCIÓN: Concesiones.Concesion

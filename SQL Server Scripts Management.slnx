@@ -1,0 +1,70 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Default" />
+    <Platform Name="Default" />
+  </Configurations>
+
+  <Folder Name="/00_Setup/">
+    <File Path="database/00_Setup/config.sql" />
+  </Folder>
+
+  <Folder Name="/scripts/">
+    <File Path="scripts/runAll.sql" />
+  </Folder>
+
+  <Folder Name="/01_DDL/">
+    <File Path="database/01_DDL/00_teardown.sql" />
+    <File Path="database/01_DDL/01_base_esquemas.sql" />
+    <File Path="database/01_DDL/02_tablas.sql" />
+  </Folder>
+
+  <Folder Name="/02_Seguridad/">
+    <File Path="database/02_Seguridad/Logins.sql" />
+    <File Path="database/02_Seguridad/Users.sql" />
+    <File Path="database/02_Seguridad/Roles.sql" />
+    <File Path="database/02_Seguridad/Permisos.sql" />
+    <File Path="database/02_Seguridad/Cifrado.sql" />
+  </Folder>
+
+  <Folder Name="/03_Programabilidad/" />
+
+  <Folder Name="/03_Programabilidad/Functions/">
+    <File Path="database/03_Programabilidad/Functions/Parques.ufnLimpiarNombreArea.sql" />
+  </Folder>
+
+  <Folder Name="/03_Programabilidad/Stored Procedures/">
+    <File Path="database/03_Programabilidad/Stored Procedures/scriptCreateProcedures.sql" />
+  </Folder>
+
+  <Folder Name="/03_Programabilidad/Views/">
+    <File Path="database/03_Programabilidad/Views/Parques.vwClientOrders.sql" />
+  </Folder>
+
+  <Folder Name="/04_Data/">
+    <File Path="database/04_Data/datos_iniciales.sql" />
+  </Folder>
+
+  <Folder Name="/05_Imports/indec/">
+    <File Path="database/05_Imports/indec/Parques.uspImportarAreasProtegidas.sql" />
+  </Folder>
+
+  <Folder Name="/05_Imports/gobar/">
+    <File Path="database/05_Imports/gobar/Parques.uspImportarEstadisticasVisitas.sql" />
+  </Folder>
+
+  <Folder Name="/05_Imports/ign/">
+    <File Path="database/05_Imports/ign/Parques.uspImportarUbicacionesDeAreasProtegidas.sql" />
+  </Folder>
+
+  <Folder Name="/06_Reportes/">
+    <File Path="database/06_Reportes/scriptReportes.sql" />
+  </Folder>
+
+  <Folder Name="/07_Testing/">
+    <File Path="database/07_Testing/test_Personal.uspAsignarGuia.sql" />
+    <File Path="database/07_Testing/test_importacion.sql" />
+    <File Path="database/07_Testing/test_sp_abm.sql" />
+    <File Path="database/07_Testing/test_sp_negocio.sql" />
+    <File Path="database/07_Testing/test_reportes.sql" />
+  </Folder>
+</Solution>

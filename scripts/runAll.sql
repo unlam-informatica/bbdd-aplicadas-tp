@@ -31,27 +31,27 @@ PRINT 'Iniciando setup de la base de datos...'
 	:r "database/03_Programabilidad/Functions/Parques.ufnLimpiarNombreArea.sql"
 
 -- 03: Programabilidad — Stored Procedures
-	-- Alternativa consolidada: scriptCreateProcedures.sql (comentar los individuales si se usa)
-	:r "database/03_Programabilidad/Stored Procedures/Concesiones.uspConcesionAlta.sql"
-	:r "database/03_Programabilidad/Stored Procedures/Concesiones.uspRegistrarPagoCanon.sql"
-	:r "database/03_Programabilidad/Stored Procedures/Personal.uspAsignarGuardaparque.sql"
-	:r "database/03_Programabilidad/Stored Procedures/Personal.uspAsignarGuia.sql"
-	:r "database/03_Programabilidad/Stored Procedures/Ventas.uspVentaRegistrar.sql"
-	--:r "database/03_Programabilidad/Stored Procedures/scriptCreateProcedures.sql"
+	:r "database/03_Programabilidad/Stored Procedures/scriptCreateProcedures.sql"
+
+-- 03: Programabilidad — Vistas
+	:r "database/03_Programabilidad/Views/Parques.vwClientOrders.sql"
 
 -- 04: Data
-	--:r database/04_Data/datos_iniciales.sql
+	:r "database/04_Data/datos_iniciales.sql"
 
 -- 05: Imports — Stored Procedures de importación
 	:r "database/05_Imports/indec/Parques.uspImportarAreasProtegidas.sql"
 	:r "database/05_Imports/ign/Parques.uspImportarUbicacionesDeAreasProtegidas.sql"
 	:r "database/05_Imports/gobar/Parques.uspImportarEstadisticasVisitas.sql"
 
+-- 06: Reportes
+	:r "database/06_Reportes/scriptReportes.sql"
+
 -- 07: Testing
-	:r "database/07_Testing/test_Concesiones.uspConcesionAlta.sql"
-	:r "database/07_Testing/test_Concesiones.uspRegistrarPagoCanon.sql"
-	:r "database/07_Testing/test_Personal.uspAsignarGuardaparque.sql"
+	:r "database/07_Testing/test_sp_abm.sql"
+	:r "database/07_Testing/test_sp_negocio.sql"
 	:r "database/07_Testing/test_Personal.uspAsignarGuia.sql"
-	:r "database/07_Testing/test_Ventas.uspVentaRegistrar.sql"
+	:r "database/07_Testing/test_importacion.sql"
+	:r "database/07_Testing/test_reportes.sql"
 
 PRINT 'Setup finalizado.'

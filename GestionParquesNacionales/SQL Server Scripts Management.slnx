@@ -22,13 +22,8 @@
     <File Path="Parques.ufnCalculateTotal.sql" />
   </Folder>
   <Folder Name="/03_Programabilidad/Stored Procedures/">
-    <File Path="../database/03_Programabilidad/Stored Procedures/Parques.uspParqueAlta.sql" />
-    <File Path="../database/03_Programabilidad/Stored Procedures/Concesiones.uspConcesionAlta.sql" />
-    <File Path="../database/03_Programabilidad/Stored Procedures/Concesiones.uspRegistrarPagoCanon.sql" />
-    <File Path="../database/03_Programabilidad/Stored Procedures/Personal.uspAsignarGuia.sql" />
-    <File Path="../database/03_Programabilidad/Stored Procedures/Personal.uspAsignarGuardaparque.sql" />
-    <File Path="../database/03_Programabilidad/Stored Procedures/Ventas.uspVentaRegistrar.sql" />
     <File Path="../database/03_Programabilidad/Stored Procedures/scriptCreateProcedures.sql" />
+    <File Path="../database/03_Programabilidad/Stored Procedures/scriptReportes.sql" />
   </Folder>
   <Folder Name="/03_Programabilidad/Views/">
     <File Path="../database/03_Programabilidad/Views/Parques.vwClientOrders.sql" />
@@ -42,11 +37,12 @@
   <Folder Name="/06_Imports/" />
   <Folder Name="/07_Reportes/" />
   <Folder Name="/08_Testing/">
-    <File Path="../database/07_Testing/test_Concesiones.uspConcesionAlta.sql" />
-    <File Path="../database/07_Testing/test_Concesiones.uspRegistrarPagoCanon.sql" />
-    <File Path="../database/07_Testing/test_Personal.uspAsignarGuia.sql" />
-    <File Path="../database/07_Testing/test_Personal.uspAsignarGuardaparque.sql" />
-    <File Path="../database/07_Testing/test_Ventas.uspVentaRegistrar.sql" />
+    <File Path="../database/07_Testing/test_sp_abm.sql" />
+    <File Path="../database/07_Testing/test_sp_negocio.sql" />
+
+    <File Path="../database/07_Testing/test_importacion.sql" />
+
+    <File Path="../database/07_Testing/test_reportes.sql" />
   </Folder>
 
   <Folder Name="/Solution Items/">

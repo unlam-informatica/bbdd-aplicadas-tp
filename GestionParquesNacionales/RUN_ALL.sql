@@ -13,6 +13,10 @@ Objetivo: Carga inicial de datos (seed): parques, actividades, guias,
           para los criterios de aceptacion del TP.
 ============================================================ */
 
+PRINT 'Inicio de Ejecución de Scripts...'
+
+:OUT ver-resultado-completo-bda.log
+
 PRINT 'Creando base de datos...'
 
 -- 01: DDL
@@ -30,17 +34,6 @@ PRINT 'Creando base de datos...'
 	
 	-- Procedimientos Almacenados
 	:r "../database/03_Programabilidad/Stored Procedures/scriptCreateProcedures.sql"
-
-	:r "../database/03_Programabilidad/Stored Procedures/Concesiones.uspConcesionAlta.sql"
-	:r "../database/03_Programabilidad/Stored Procedures/Concesiones.uspRegistrarPagoCanon.sql"
-
-	:r "../database/03_Programabilidad/Stored Procedures/Parques.uspParqueAlta.sql"
-
-	:r "../database/03_Programabilidad/Stored Procedures/Personal.uspAsignarGuardaparque.sql"
-	:r "../database/03_Programabilidad/Stored Procedures/Personal.uspAsignarGuia.sql"
-
-	:r "../database/03_Programabilidad/Stored Procedures/Ventas.uspVentaRegistrar.sql"
-	
 	-- Disparadores
 	--:r ../database/ddl/triggerA.sql
 	
@@ -54,15 +47,11 @@ PRINT 'Creando base de datos...'
 	--:r ../database/ddl/08_cifrado.sql
 
 -- 07: Testing
-	:r "../database/07_Testing/test_Concesiones.uspConcesionAlta.sql"
-	:r "../database/07_Testing/test_Concesiones.uspRegistrarPagoCanon.sql"
-	--:r "../database/07_Testing/test_Parques.uspParqueAlta.sql"
-	:r "../database/07_Testing/test_Personal.uspAsignarGuardaparque.sql"
-	:r "../database/07_Testing/test_Personal.uspAsignarGuia.sql"
-	:r "../database/07_Testing/test_Ventas.uspVentaRegistrar.sql"
+	:r "../database/07_Testing/test_sp_abm.sql"
+	:r "../database/07_Testing/test_sp_negocio.sql"
+	:r "../database/07_Testing/test_reportes.sql"
 
 PRINT 'Secuencia de Generación Finalizada...'
 
-
-IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[sysdiagrams]') AND type in (N'U'))
-    DROP TABLE [dbo].[sysdiagrams];
+:OUT STDOUT
+PRINT 'Fin de generación!'

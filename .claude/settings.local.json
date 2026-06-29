@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /home/marcos/dev/workspace/unlam/bbdd-aplicadas-tp status --short)",
+      "Bash(mv '/home/marcos/dev/workspace/unlam/bbdd-aplicadas-tp/database/03_Programabilidad/Stored Procedures/Parques.uspParqueCreate.sql' '/home/marcos/dev/workspace/unlam/bbdd-aplicadas-tp/database/03_Programabilidad/Stored Procedures/Parques.uspParqueAlta.sql')",
+      "Bash(mv '/home/marcos/dev/workspace/unlam/bbdd-aplicadas-tp/database/03_Programabilidad/Stored Procedures/Concesiones.uspConcesionCreate.sql' '/home/marcos/dev/workspace/unlam/bbdd-aplicadas-tp/database/03_Programabilidad/Stored Procedures/Concesiones.uspConcesionAlta.sql')",
+      "Bash(mv '/home/marcos/dev/workspace/unlam/bbdd-aplicadas-tp/database/03_Programabilidad/Stored Procedures/Concesiones.uspConcesionPagoRegister.sql' '/home/marcos/dev/workspace/unlam/bbdd-aplicadas-tp/database/03_Programabilidad/Stored Procedures/Concesiones.uspRegistrarPagoCanon.sql')",
+      "Bash(mv '/home/marcos/dev/workspace/unlam/bbdd-aplicadas-tp/database/03_Programabilidad/Stored Procedures/Personal.uspGuardaparqueAsignarParque.sql' '/home/marcos/dev/workspace/unlam/bbdd-aplicadas-tp/database/03_Programabilidad/Stored Procedures/Personal.uspAsignarGuardaparque.sql')",
+      "Bash(mv '/home/marcos/dev/workspace/unlam/bbdd-aplicadas-tp/database/03_Programabilidad/Stored Procedures/Personal.uspTourAsignarGuia.sql' '/home/marcos/dev/workspace/unlam/bbdd-aplicadas-tp/database/03_Programabilidad/Stored Procedures/Personal.uspAsignarGuia.sql')",
+      "WebFetch(domain:www.untourism.int)",
+      "WebFetch(domain:www.protectedplanet.net)",
+      "WebFetch(domain:www.ign.gob.ar)",
+      "WebFetch(domain:datos.gob.ar)",
+      "WebFetch(domain:datos.yvera.gob.ar)",
+      "WebFetch(domain:geoportal.ign.gob.ar)",
+      "WebFetch(domain:api.protectedplanet.net)"
+    ]
+  }
+}

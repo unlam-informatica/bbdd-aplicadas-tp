@@ -39,18 +39,23 @@ GO
 
 IF OBJECT_ID('Parques.Parque', 'U') IS NOT NULL DROP TABLE Parques.Parque;
 CREATE TABLE Parques.Parque (
-    ParqueId      INT IDENTITY(1,1) NOT NULL,
-    Nombre        VARCHAR(100)      NOT NULL,
-    Ubicacion     VARCHAR(250)      NOT NULL,
-    Superficie    DECIMAL(12,2)     NOT NULL,
-    --UIDExterno    VARCHAR(100)      NOT NULL,
-    TipoParque    VARCHAR(15)       NOT NULL,
-    Latitud       DECIMAL(9,6)      NOT NULL,
-    Longitud      DECIMAL(9,6)      NOT NULL,
-    EsActivo      BIT               NOT NULL
+    ParqueId               INT IDENTITY(1,1) NOT NULL,
+    Nombre                 VARCHAR(200)      NOT NULL,
+    Ubicacion              VARCHAR(500)      NULL,
+    Ecorregion             VARCHAR(300)      NULL,
+    Superficie             DECIMAL(12,2)     NULL,
+    TipoParque             VARCHAR(100)      NULL,
+    Latitud                DECIMAL(9,6)      NULL,
+    Longitud               DECIMAL(9,6)      NULL,
+    EsActivo               BIT               NOT NULL,
+    WdpaId                 INT               NULL,
+    AnioDeclaracion        INT               NULL,
+    AnioCreacion           INT               NULL,
+    Descripcion            NVARCHAR(MAX)     NULL,
+    FuenteImportacion      VARCHAR(100)      NULL,
+    FechaUltimaImportacion DATETIME          NULL
 );
 ALTER TABLE Parques.Parque ADD CONSTRAINT PK_Parque_ParqueId PRIMARY KEY (ParqueId);
-ALTER TABLE Parques.Parque ADD CONSTRAINT CK_Parque_TipoParque CHECK (TipoParque IN ('Nacional', 'Provincial', 'Municipal', 'Reserva'));
 ALTER TABLE Parques.Parque ADD CONSTRAINT DF_Parque_EsActivo DEFAULT 1 FOR EsActivo;
 
 IF OBJECT_ID('Concesiones.Concesion', 'U') IS NOT NULL DROP TABLE Concesiones.Concesion;
@@ -248,6 +253,27 @@ ALTER TABLE Ventas.LineaActividad
 ALTER TABLE Ventas.Entrada
     ADD CONSTRAINT FK_Entrada_Parque_ParqueId
     FOREIGN KEY (ParqueId) REFERENCES Parques.Parque(ParqueId);
+
+-- -----------------------------------------------------------------------------
+-- TABLA: Parques.EstadisticaVisitasNacional
+-- Estadísticas nacionales de visitas a parques, importadas desde datos.yvera.gob.ar
+-- -----------------------------------------------------------------------------
+
+IF OBJECT_ID('Parques.EstadisticaVisitasNacional', 'U') IS NOT NULL DROP TABLE Parques.EstadisticaVisitasNacional;
+CREATE TABLE Parques.EstadisticaVisitasNacional (
+    Anio            INT         NOT NULL,
+    Mes             INT         NOT NULL,
+    OrigenVisitante VARCHAR(20) NOT NULL,
+    CantidadVisitas INT         NOT NULL
+);
+ALTER TABLE Parques.EstadisticaVisitasNacional
+    ADD CONSTRAINT PK_EstadisticaVisitasNacional PRIMARY KEY (Anio, Mes, OrigenVisitante);
+ALTER TABLE Parques.EstadisticaVisitasNacional
+    ADD CONSTRAINT CK_EstadisticaVisitasNacional_Origen
+    CHECK (OrigenVisitante IN ('residentes', 'no_residentes', 'total'));
+ALTER TABLE Parques.EstadisticaVisitasNacional
+    ADD CONSTRAINT CK_EstadisticaVisitasNacional_Mes
+    CHECK (Mes BETWEEN 1 AND 12);
 
 -- -----------------------------------------------------------------------------
 -- ÍNDICES

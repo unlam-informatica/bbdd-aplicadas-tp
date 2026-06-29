@@ -15,6 +15,11 @@ Objetivo: Setear los parámetros de configuración del servidor.
 EXEC sp_configure 'show advanced options', 1;
 RECONFIGURE;
 
+-- Habilitar consultas distribuidas ad hoc (requerido por uspImportarActividades
+-- para usar OPENROWSET con archivos XML locales)
+EXEC sp_configure 'Ad Hoc Distributed Queries', 1;
+RECONFIGURE;
+
 -- Configurar memoria máxima (ej: 12GB)
 EXEC sp_configure 'max server memory (MB)', 1024;
 RECONFIGURE;

@@ -111,13 +111,13 @@ GO
 -- =============================================
 PRINT '--- Insertando datos en Parques.Parque ---';
 
-INSERT INTO Parques.Parque (Nombre, Ubicacion, Superficie, TipoParque, Latitud, Longitud, EsActivo)
-VALUES 
-	('Parque Nacional Iguazú', 'Misiones, Argentina', 67620.00, 'Nacional', -25.594519, -54.557416, 1),
-	('Parque Nacional Los Glaciares', 'Santa Cruz, Argentina', 494162.00, 'Nacional', -50.332917, -73.063889, 1),
-	('Parque Nacional Bariloche', 'Río Negro, Argentina', 736000.00, 'Nacional', -41.126222, -71.635556, 1),
-	('Parque Provincial Aconcagua', 'Mendoza, Argentina', 71610.00, 'Provincial', -32.653611, -70.011111, 1),
-	('Reserva Natural Iberá', 'Corrientes, Argentina', 784900.00, 'Reserva', -28.256667, -58.150000, 1);
+INSERT INTO Parques.Parque (Nombre, Ubicacion, Superficie, TipoParque, Latitud, Longitud, EsActivo, AnioDeclaracion)
+VALUES
+	('Parque Nacional Iguazú',       'Misiones, Argentina',    67620.00, 'Nacional',   -25.594519, -54.557416, 1, 1934),
+	('Parque Nacional Los Glaciares','Santa Cruz, Argentina',  494162.00, 'Nacional',  -50.332917, -73.063889, 1, 1937),
+	('Parque Nacional Nahuel Huapi', 'Río Negro, Argentina',   736000.00, 'Nacional',  -41.126222, -71.635556, 1, 1934),
+	('Parque Provincial Aconcagua',  'Mendoza, Argentina',      71610.00, 'Provincial', -32.653611, -70.011111, 1, 1983),
+	('Reserva Natural Iberá',        'Corrientes, Argentina',  784900.00, 'Reserva',   -28.256667, -58.150000, 1, 1982);
 GO
 
 -- =============================================
@@ -231,7 +231,7 @@ VALUES
 	(1, 'Entrada General Iguazú', 'Acceso completo a todas las cataratas', 60000.00, GETDATE()),
 	(1, 'Entrada Reducida Iguazú', 'Para menores y discapacitados', 30000.00, GETDATE()),
 	(2, 'Entrada General Glaciares', 'Acceso al Perito Moreno', 80000.00, GETDATE()),
-	(3, 'Entrada General Bariloche', 'Acceso a circuitos principales', 70000.00, GETDATE()),
+	(3, 'Entrada General Nahuel Huapi', 'Acceso a circuitos principales', 70000.00, GETDATE()),
 	(4, 'Entrada General Aconcagua', 'Acceso a zonas permitidas', 50000.00, GETDATE());
 GO
 

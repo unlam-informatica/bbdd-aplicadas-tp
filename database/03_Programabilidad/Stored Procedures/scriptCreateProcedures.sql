@@ -1627,7 +1627,7 @@ BEGIN
 		    -- CREAR TICKET Y CABECERA VENTA
 		    -- =============================================
 		    SELECT @UltimoTicket = ISNULL(MAX(V.NumeroTicket), 0)
-		    FROM Ventas.Venta V WITH (UPDLOCK, HOLDLOCK)
+		    FROM Ventas.Venta V
 		    WHERE V.PuntoVenta = @PuntoVenta;
 
 		    SET @NumeroTicket = @UltimoTicket + 1;

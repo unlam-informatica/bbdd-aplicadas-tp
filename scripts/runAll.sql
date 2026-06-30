@@ -17,41 +17,30 @@ PRINT 'Inicio de Ejecución de Scripts...'
 
 :OUT ver-resultado-completo-bda.log
 
-PRINT 'Creando base de datos...'
-
 -- 01: DDL
 	:r "database/01_DDL/00_teardown.sql"
 	:r "database/01_DDL/01_base_esquemas.sql"
 	:r "database/01_DDL/02_tablas.sql"
-	
+
 -- 02: Programabilidad
-	
-	-- 03: Programabilidad — Funciones
 	:r "database/03_Programabilidad/Functions/Parques.ufnLimpiarNombreArea.sql"
-	
-	-- Procedimientos Almacenados
 	:r "database/03_Programabilidad/Stored Procedures/scriptCreateProcedures.sql"
-	-- Disparadores
-	--:r ../database/ddl/triggerA.sql
-	
-	-- Vistas
-	-- :r "database/03_Programabilidad/Views/Parques.vwClientOrders.sql"
 
--- 03: Data
-	:r "database/04_Data/datos_iniciales.sql"
-
--- 04: Imports
+-- 03: Importación
 	:r "database/05_Imports/gobar/Parques.uspImportarEstadisticasVisitas.sql"
 	:r "database/05_Imports/ign/Parques.uspImportarUbicacionesDeAreasProtegidas.sql"
 	:r "database/05_Imports/indec/Parques.uspImportarAreasProtegidas.sql"
 
--- 05: Reports
+-- 04: Reportes
 	:r "database/06_Reportes/scriptReportes.sql"
 
--- 06: Seguridad
+-- 05: Seguridad
 	:r "database/02_Seguridad/01_Roles.sql"
 	:r "database/02_Seguridad/02_Logins.sql"
 	:r "database/02_Seguridad/03_Users.sql"
+
+-- 06: Datos iniciales
+	:r "database/04_Data/datos_iniciales.sql"
 
 -- 07: Testing
 	:r "database/07_Testing/test_sp_abm.sql"

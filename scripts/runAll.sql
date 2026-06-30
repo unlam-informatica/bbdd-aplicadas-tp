@@ -31,11 +31,6 @@ PRINT 'Creando base de datos...'
 	
 	-- Procedimientos Almacenados
 	:r "database/03_Programabilidad/Stored Procedures/scriptCreateProcedures.sql"
-	-- Disparadores
-	--:r ../database/ddl/triggerA.sql
-	
-	-- Vistas
-	-- :r "database/03_Programabilidad/Views/Parques.vwClientOrders.sql"
 
 -- 03: Data
 	:r "database/04_Data/datos_iniciales.sql"

@@ -25,7 +25,7 @@ Objetivo: Entrega 8 - Cifrado de datos sensibles.
         descifren usando las funciones auxiliares.
      5) Agrega Stored Procedures de consulta que descifran los datos.
 ============================================================ */
- 
+
 USE GestionParquesNacionales;
 GO
  
@@ -60,7 +60,7 @@ BEGIN
 END
 GO
  
-CREATE OR ALTER FUNCTION dbo.fn_Desencriptar (@ValorCifrado VARBINARY(128))
+CREATE OR ALTER FUNCTION dbo.ufnDesencriptar (@ValorCifrado VARBINARY(128))
 RETURNS VARCHAR(50)
 AS
 BEGIN
@@ -103,8 +103,8 @@ BEGIN
     OPEN SYMMETRIC KEY SK_DatosSensibles DECRYPTION BY CERTIFICATE Cert_DatosSensibles;
  
     UPDATE Personal.Guia
-    SET DniCifrado = dbo.fn_Encriptar(CONVERT(VARCHAR(20), Dni)),
-        DniHash    = dbo.fn_HashDato(CONVERT(VARCHAR(20), Dni))
+    SET DniCifrado = dbo.ufnEncriptar(CONVERT(VARCHAR(20), Dni)),
+        DniHash    = dbo.ufnHashDato(CONVERT(VARCHAR(20), Dni))
     WHERE DniCifrado IS NULL;
  
     CLOSE SYMMETRIC KEY SK_DatosSensibles;
@@ -152,8 +152,8 @@ BEGIN
     OPEN SYMMETRIC KEY SK_DatosSensibles DECRYPTION BY CERTIFICATE Cert_DatosSensibles;
  
     UPDATE Personal.Guardaparque
-    SET DniCifrado = dbo.fn_Encriptar(CONVERT(VARCHAR(20), Dni)),
-        DniHash    = dbo.fn_HashDato(CONVERT(VARCHAR(20), Dni))
+    SET DniCifrado = dbo.ufnEncriptar(CONVERT(VARCHAR(20), Dni)),
+        DniHash    = dbo.ufnHashDato(CONVERT(VARCHAR(20), Dni))
     WHERE DniCifrado IS NULL;
  
     CLOSE SYMMETRIC KEY SK_DatosSensibles;
@@ -194,8 +194,8 @@ BEGIN
     OPEN SYMMETRIC KEY SK_DatosSensibles DECRYPTION BY CERTIFICATE Cert_DatosSensibles;
  
     UPDATE Ventas.Visitante
-    SET DniCifrado = dbo.fn_Encriptar(CONVERT(VARCHAR(20), Dni)),
-        DniHash    = dbo.fn_HashDato(CONVERT(VARCHAR(20), Dni))
+    SET DniCifrado = dbo.ufnEncriptar(CONVERT(VARCHAR(20), Dni)),
+        DniHash    = dbo.ufnHashDato(CONVERT(VARCHAR(20), Dni))
     WHERE DniCifrado IS NULL;
  
     CLOSE SYMMETRIC KEY SK_DatosSensibles;
@@ -243,8 +243,8 @@ BEGIN
     OPEN SYMMETRIC KEY SK_DatosSensibles DECRYPTION BY CERTIFICATE Cert_DatosSensibles;
  
     UPDATE Concesiones.Concesion
-    SET CuitCifrado = dbo.fn_Encriptar(CONVERT(VARCHAR(20), Cuit)),
-        CuitHash    = dbo.fn_HashDato(CONVERT(VARCHAR(20), Cuit))
+    SET CuitCifrado = dbo.ufnEncriptar(CONVERT(VARCHAR(20), Cuit)),
+        CuitHash    = dbo.ufnHashDato(CONVERT(VARCHAR(20), Cuit))
     WHERE CuitCifrado IS NULL;
  
     CLOSE SYMMETRIC KEY SK_DatosSensibles;
@@ -289,7 +289,7 @@ BEGIN
     SET NOCOUNT ON;
  
     DECLARE @ERRORES VARCHAR(MAX) = '';
-    DECLARE @DniHash VARBINARY(32) = dbo.fn_HashDato(CONVERT(VARCHAR(20), @Dni));
+    DECLARE @DniHash VARBINARY(32) = dbo.ufnHashDato(CONVERT(VARCHAR(20), @Dni));
  
     IF @Nombre IS NULL OR LTRIM(RTRIM(@Nombre)) = ''
         SET @ERRORES += 'El campo nombre no puede estar vacio.' + CHAR(13) + CHAR(10);
@@ -318,7 +318,7 @@ BEGIN
     OPEN SYMMETRIC KEY SK_DatosSensibles DECRYPTION BY CERTIFICATE Cert_DatosSensibles;
  
     INSERT INTO Personal.Guia (Nombre, Apellido, Dni, DniHash, Titulo, Especialidad, VigenciaAutorizacion)
-    VALUES (@Nombre, @Apellido, dbo.fn_Encriptar(CONVERT(VARCHAR(20), @Dni)), @DniHash, @Titulo, @Especialidad, @VigenciaAutorizacion);
+    VALUES (@Nombre, @Apellido, dbo.ufnEncriptar(CONVERT(VARCHAR(20), @Dni)), @DniHash, @Titulo, @Especialidad, @VigenciaAutorizacion);
  
     CLOSE SYMMETRIC KEY SK_DatosSensibles;
  
@@ -372,8 +372,8 @@ BEGIN
     INSERT INTO Personal.Guardaparque(Nombre, Apellido, Dni, DniHash, FechaIngresoSistema, FechaEgresoSistema, EsActivo, ParqueId)
     VALUES (
         @Nombre, @Apellido,
-        dbo.fn_Encriptar(CONVERT(VARCHAR(20), @Dni)),
-        dbo.fn_HashDato(CONVERT(VARCHAR(20), @Dni)),
+        dbo.ufnEncriptar(CONVERT(VARCHAR(20), @Dni)),
+        dbo.ufnHashDato(CONVERT(VARCHAR(20), @Dni)),
         @FechaIngresoSistema, @FechaEgresoSistema, @Activo, @ParqueId
     );
  
@@ -556,8 +556,8 @@ BEGIN
             (ParqueId, Cuit, CuitHash, EmpresaConcesionaria, TipoActividad, FechaInicio, FechaFin, CanonMensual, EsActivo)
         VALUES
             (@ParqueId,
-             dbo.fn_Encriptar(CONVERT(VARCHAR(20), @Cuit)),
-             dbo.fn_HashDato(CONVERT(VARCHAR(20), @Cuit)),
+             dbo.ufnEncriptar(CONVERT(VARCHAR(20), @Cuit)),
+             dbo.ufnHashDato(CONVERT(VARCHAR(20), @Cuit)),
              @EmpresaConcesionaria, @TipoActividad, @FechaInicio, @FechaFin, @CanonMensual, 1);
  
         CLOSE SYMMETRIC KEY SK_DatosSensibles;
@@ -587,7 +587,7 @@ BEGIN
     SET NOCOUNT ON;
  
     DECLARE @ERRORES VARCHAR(MAX) = '';
-    DECLARE @DniHash VARBINARY(32) = dbo.fn_HashDato(CONVERT(VARCHAR(20), @Dni));
+    DECLARE @DniHash VARBINARY(32) = dbo.ufnHashDato(CONVERT(VARCHAR(20), @Dni));
  
     IF @NombreApellido IS NULL OR LTRIM(RTRIM(@NombreApellido)) = ''
         SET @ERRORES += 'El nombre y apellido no pueden estar vacios.' + CHAR(13) + CHAR(10);
@@ -604,7 +604,7 @@ BEGIN
     OPEN SYMMETRIC KEY SK_DatosSensibles DECRYPTION BY CERTIFICATE Cert_DatosSensibles;
  
     INSERT INTO Ventas.Visitante (NombreApellido, Dni, DniHash)
-    VALUES (@NombreApellido, dbo.fn_Encriptar(CONVERT(VARCHAR(20), @Dni)), @DniHash);
+    VALUES (@NombreApellido, dbo.ufnEncriptar(CONVERT(VARCHAR(20), @Dni)), @DniHash);
  
     CLOSE SYMMETRIC KEY SK_DatosSensibles;
  
@@ -625,7 +625,7 @@ BEGIN
     SET NOCOUNT ON;
  
     DECLARE @ERRORES VARCHAR(MAX) = '';
-    DECLARE @DniHash VARBINARY(32) = dbo.fn_HashDato(CONVERT(VARCHAR(20), @Dni));
+    DECLARE @DniHash VARBINARY(32) = dbo.ufnHashDato(CONVERT(VARCHAR(20), @Dni));
  
     IF NOT EXISTS (SELECT 1 FROM Ventas.Visitante WHERE VisitanteId = @VisitanteId)
         SET @ERRORES += 'El visitante que se quiere modificar no existe.' + CHAR(13) + CHAR(10);
@@ -646,7 +646,7 @@ BEGIN
  
     UPDATE Ventas.Visitante
     SET NombreApellido = @NombreApellido,
-        Dni             = dbo.fn_Encriptar(CONVERT(VARCHAR(20), @Dni)),
+        Dni             = dbo.ufnEncriptar(CONVERT(VARCHAR(20), @Dni)),
         DniHash         = @DniHash
     WHERE VisitanteId = @VisitanteId;
  

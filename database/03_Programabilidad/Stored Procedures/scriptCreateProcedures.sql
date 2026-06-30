@@ -1256,7 +1256,7 @@ BEGIN
     IF @ERRORES <> ''
         THROW 50001, @ERRORES, 1;
 
-    UPDATE Ventas.TipoVisitante 
+    UPDATE Ventas.TipoVisitante
     SET EsActivo = 0
     WHERE TipoVisitanteId = @TipoVisitanteId;
 END

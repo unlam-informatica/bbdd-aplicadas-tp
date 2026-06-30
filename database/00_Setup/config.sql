@@ -7,7 +7,7 @@ Integrantes:
      - Rios, Marcos Adrían
      - Romano, Jorge Dario
 
-Fecha: -- pendiente
+Fecha: 30/06/2026
 Objetivo: Setear los parámetros de configuración del servidor.
 ============================================================ */
 

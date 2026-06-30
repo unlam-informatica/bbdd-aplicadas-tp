@@ -309,13 +309,15 @@ USE master;
 GO
 
 SELECT
-    sp.name                                       AS Login,
-    sp.type_desc                                  AS Tipo,
-    sp.is_disabled                                AS Deshabilitado,
-    sp.is_policy_checked                          AS PoliticaPassword,
-    sp.is_expiration_checked                      AS ExpiracionPassword,
-    CONVERT(VARCHAR(10), sp.create_date, 103)     AS FechaCreacion
+    sp.name                                   AS Login,
+    sp.type_desc                              AS Tipo,
+    sp.is_disabled                            AS Deshabilitado,
+    sl.is_policy_checked                      AS PoliticaPassword,
+    sl.is_expiration_checked                  AS ExpiracionPassword,
+    CONVERT(VARCHAR(10), sp.create_date, 103) AS FechaCreacion
 FROM sys.server_principals sp
+LEFT JOIN sys.sql_logins sl
+    ON sp.principal_id = sl.principal_id
 WHERE sp.name IN (
     'login_admin_sistema',
     'login_boleteria_app',
@@ -324,6 +326,8 @@ WHERE sp.name IN (
 )
 ORDER BY sp.name;
 GO
+
+
 
 -- 12.2: Usuarios en la base de datos con su login asociado
 USE GestionParquesNacionales;

@@ -7,7 +7,7 @@ Integrantes:
      - Rios, Marcos Adrían
      - Romano, Jorge Dario
 
-Fecha: -- pendiente
+Fecha: 30/06/2026
 Objetivo: Scripts de testing de los stored procedures de logica de
           negocio. Cada prueba incluye comentarios con el resultado
           esperado. Cubre casos exitosos y validaciones cuando no se

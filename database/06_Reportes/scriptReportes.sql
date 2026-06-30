@@ -631,7 +631,7 @@ GO
 -- =============================================================================
 -- SP 6: Actividades mas demandadas
 -- =============================================================================
-CREATE OR ALTER PROCEDURE Ventas.usrVisitantesPorParque
+CREATE OR ALTER PROCEDURE Ventas.usrReporteDemandaActividades
 AS
 BEGIN
     SET NOCOUNT ON;
